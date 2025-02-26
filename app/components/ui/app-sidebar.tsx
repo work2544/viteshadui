@@ -14,16 +14,15 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "~/components/ui/sidebar";
-import { menu } from "~/components/data/menu";
 import { useLocation } from "react-router";
+import { useCart } from "~/context/cartcontext";
+import type { MenuItem } from "../types/Types";
 
 // This is sample data.
-const data = {
-  navMain: menu,
-};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { hash } = useLocation();
+  const { state } = useCart();
   function onSmoothScroll(
     e: React.MouseEvent<HTMLAnchorElement>,
     hashname: string | undefined
@@ -57,35 +56,35 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            {data.navMain.map((item, idx) => (
+            {state.product.map((category, idx) => (
               <SidebarMenuItem key={idx}>
                 <SidebarMenuButton asChild>
                   <a
                     className="font-medium cursor-pointer"
                     onClick={(e) => {
-                      onSmoothScroll(e, item.type);
+                      onSmoothScroll(e, category.type);
                     }}
                   >
-                    {item.type}
+                    {category.type}
                   </a>
                 </SidebarMenuButton>
-                {item.items?.length ? (
+                {category.items?.length ? (
                   <SidebarMenuSub>
-                    {item.items.map((item) => (
-                      <SidebarMenuSubItem key={item.cardTitle}>
+                    {category.items.map((menu: MenuItem) => (
+                      <SidebarMenuSubItem key={menu.id}>
                         <SidebarMenuSubButton
                           asChild
                           isActive={
                             decodeURIComponent(hash.split("#")[1]) ===
-                            item.cardTitle
+                            menu.title
                           }
                         >
                           <a
                             className="font-medium cursor-pointer"
-                            href={"#" + item.cardTitle}
-                            onClick={(e) => onSmoothScroll(e, item.cardTitle)}
+                            href={"#" + menu.id}
+                            onClick={(e) => onSmoothScroll(e, menu.id)}
                           >
-                            {item.cardTitle}
+                            {menu.title}
                           </a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
