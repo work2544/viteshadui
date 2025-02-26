@@ -15,16 +15,18 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "~/components/ui/sidebar";
+import ProductCart from "../productcart";
+
 
 export default function Page() {
-  const {hash} = useLocation();
-  const menuRef= useRef("");
+  const { hash } = useLocation();
+  const menuRef = useRef("");
   return (
     <SidebarProvider className="font-menu">
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b">
-          <div className="flex items-center gap-2 px-3">
+        <header className="flex h-16 items-center gap-2 border-b justify-between">
+          <div className="flex items-center gap-2 px-3 ">
             <SidebarTrigger />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
@@ -35,11 +37,18 @@ export default function Page() {
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
                   <BreadcrumbPage>
-                    {hash.split("#")[1]?decodeURIComponent(hash.split("#")[1]):<></>}
+                    {hash.split("#")[1] ? (
+                      decodeURIComponent(hash.split("#")[1])
+                    ) : (
+                      <></>
+                    )}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
+          </div>
+          <div className="mr-20">
+            <ProductCart />
           </div>
         </header>
         <Outlet />

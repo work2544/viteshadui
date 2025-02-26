@@ -5,7 +5,7 @@ export const menu: MenuCategory[] = [
     type: "อาหารจานเดียว",
     items: [
       {
-        id: "noodle",
+        id: "ก๋วยเตี๋ยว",
         title: "ก๋วยเตี๋ยว",
         description: "ซุปหอม ๆ จากการเคี่ยวกระดูกหมูและสมุนไพร",
         src: "app/components/img/noodle/noodle.png",
@@ -14,7 +14,7 @@ export const menu: MenuCategory[] = [
         qty: 0,
       },
       {
-        id: "kawmungai",
+        id: "ข้าวมันไก่",
         title: "ข้าวมันไก่",
         description: "ไก่นุ่ม ๆ ข้าวมันหอม ๆ",
         src: "app/components/img/kawmungai/kawmungai.png",
@@ -23,7 +23,7 @@ export const menu: MenuCategory[] = [
         qty: 0,
       },
       {
-        id: "kaijeaw",
+        id: "ข้าวไข่เจียว",
         title: "ข้าวไข่เจียว",
         description: "ไข่กรอบนุ่ม ไม่อมน้ำมัน",
         src: "app/components/img/kaijeaw/kaijeaw.png",
@@ -32,7 +32,7 @@ export const menu: MenuCategory[] = [
         qty: 0,
       },
       {
-        id: "kaithun",
+        id: "ไข่ตุ๋น",
         title: "ไข่ตุ๋น",
         description: "หน้าเนียน เนื้อนุ่ม น้ำซุปหอมเข้มข้น",
         src: "app/components/img/kaithun/kaithun.png",
@@ -60,7 +60,7 @@ export const menu: MenuCategory[] = [
     type: "อาหารกินเล่น",
     items: [
       {
-        id: "fried-chicken",
+        id: "ไก่ทอดน้ำปลา",
         title: "ไก่ทอดน้ำปลา",
         description: "กรอบนอก นุ่มใน หอมน้ำปลา",
         src: "app/components/img/friedchicken/friedchicken.png",
@@ -74,7 +74,7 @@ export const menu: MenuCategory[] = [
     type: "เครื่องดื่ม",
     items: [
       {
-        id: "water",
+        id: "น้ำเปล่า",
         title: "น้ำเปล่า",
         description: "เพิ่มความสดชื่น",
         src: "app/components/img/drink/water.png",
