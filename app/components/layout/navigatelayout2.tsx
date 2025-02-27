@@ -18,16 +18,17 @@ import {
 import ProductCart from "../productcart";
 
 export default function Page() {
-  const [hashname, setHashname] = useState("");
+  const [hashname, setHashname] = useState<string>("");
   const location = useLocation();
   useEffect(() => {
-    setHashname(decodeURIComponent(location.hash.split("#")[1]));
+    let hash = decodeURIComponent(location.hash.split("#")[1]);
+    if (hash !== "undefined") setHashname(hash);
   }, [location, hashname]);
   return (
     <SidebarProvider className="font-menu">
       <AppSidebar />
       <SidebarInset>
-      <header className="sticky top-0 z-10 flex h-16 items-center border-b bg-background px-4">
+        <header className="sticky top-0 z-10 flex h-16 items-center border-b bg-background px-4">
           <div className="flex flex-1 items-center gap-2">
             <SidebarTrigger />
             <Separator orientation="vertical" className="mr-2 h-4" />
@@ -38,7 +39,7 @@ export default function Page() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>{hashname ? hashname : <></>}</BreadcrumbPage>
+                  <BreadcrumbPage>{hashname}</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
