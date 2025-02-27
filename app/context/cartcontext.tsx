@@ -22,7 +22,7 @@ type ICartProvider = {
 const CartContext = createContext<CountContextType | undefined>(undefined);
 
 export default function CartProvider({ children }: ICartProvider) {
-  const [product, setProduct] = useState<MenuCategory[]>(menu);
+  const product: MenuCategory[] = menu;
   const [state, dispatch] = useReducer(CartReducer, {
     product: product,
     cart: [],
@@ -60,7 +60,6 @@ export const CartReducer = (
           ),
         };
       } else {
-        
         return {
           ...state,
           cart: [...state.cart, { ...action.payload, qty: 1 }],
@@ -68,7 +67,6 @@ export const CartReducer = (
       }
 
     case "REMOVE_FROM_CART":
-
       if (existingItem && existingItem.qty > 0) {
         return {
           ...state,
