@@ -1,5 +1,5 @@
 import * as React from "react";
-import { GalleryVerticalEnd } from "lucide-react";
+import { AiFillAccountBook } from "react-icons/ai";
 import { Link } from "react-scroll";
 import {
   Sidebar,
@@ -14,7 +14,6 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "~/components/ui/sidebar";
-import { useLocation, useNavigate } from "react-router";
 import { useCart } from "~/context/cartcontext";
 import type { MenuItem } from "../types/Types";
 
@@ -37,7 +36,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild>
               <Link to="" smooth={true} delay={100}>
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GalleryVerticalEnd className="size-4" />
+                  <AiFillAccountBook className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-medium">เมนูอาหาร</span>
