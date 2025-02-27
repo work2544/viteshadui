@@ -46,8 +46,8 @@ export const menu: MenuCategory[] = [
     type: "กับข้าว",
     items: [
       {
-        id: "kaithun-side",
-        title: "ไข่ตุ๋น",
+        id: "ผัดเผ็ด",
+        title: "ผัดเผ็ด",
         description: "หน้าเนียน เนื้อนุ่ม น้ำซุปหอมเข้มข้น",
         src: "assets/img/kaithun/kaithun.png",
         price: 30,

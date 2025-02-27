@@ -24,12 +24,12 @@ function ProductCart() {
       <SheetContent>
         <SheetHeader>
           {cart.map((item) => (
-            <>
+            <React.Fragment key={item.title}>
               <SheetTitle>{item.title}</SheetTitle>
               <SheetDescription>
                 {item.price}x{item.qty}
               </SheetDescription>
-            </>
+            </React.Fragment>
           ))}
         </SheetHeader>
       </SheetContent>
