@@ -3,10 +3,10 @@ import {
   index,
   layout,
   prefix,
+  relative,
+  route,
 } from "@react-router/dev/routes";
 
 export default [
-  ...prefix("shadui", [
-    layout("components/layout/navigatelayout2.tsx", [index("routes/shadui.tsx")]),
-  ]),
+  layout("components/layout/navigatelayout2.tsx", [index("routes/shadui.tsx")]),
 ] satisfies RouteConfig;

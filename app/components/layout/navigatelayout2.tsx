@@ -19,8 +19,7 @@ import ProductCart from "../productcart";
 
 
 export default function Page() {
-  const { hash } = useLocation();
-  const menuRef = useRef("");
+
   return (
     <SidebarProvider className="font-menu">
       <AppSidebar />
@@ -37,11 +36,11 @@ export default function Page() {
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
                   <BreadcrumbPage>
-                    {hash.split("#")[1] ? (
+                    {/* {hash.split("#")[1] ? (
                       decodeURIComponent(hash.split("#")[1])
                     ) : (
                       <></>
-                    )}
+                    )} */}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
