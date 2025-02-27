@@ -27,8 +27,8 @@ export default function Page() {
     <SidebarProvider className="font-menu">
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 items-center gap-2 border-b justify-between">
-          <div className="flex items-center gap-2 px-3 ">
+      <header className="sticky top-0 z-10 flex h-16 items-center border-b bg-background px-4">
+          <div className="flex flex-1 items-center gap-2">
             <SidebarTrigger />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
@@ -38,14 +38,12 @@ export default function Page() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>
-                    {hashname? hashname: (<></>)}
-                  </BreadcrumbPage>
+                  <BreadcrumbPage>{hashname ? hashname : <></>}</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </div>
-          <div className="mr-20">
+          <div>
             <ProductCart />
           </div>
         </header>
