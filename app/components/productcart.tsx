@@ -18,7 +18,7 @@ function ProductCart() {
       <SheetTrigger className="relative flex">
         <FaShoppingCart className="text-3xl mr-2" />
         <span className="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
-          5
+          {cart.reduce((acc, item) => acc + item.qty, 0)}
         </span>
       </SheetTrigger>
       <SheetContent>
