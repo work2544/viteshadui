@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Outlet, useLocation } from "react-router";
 import { AppSidebar } from "~/components/ui/app-sidebar";
 import {
@@ -17,9 +17,12 @@ import {
 } from "~/components/ui/sidebar";
 import ProductCart from "../productcart";
 
-
 export default function Page() {
-
+  const [hashname, setHashname] = useState("");
+  const location = useLocation();
+  useEffect(() => {
+    setHashname(decodeURIComponent(location.hash.split("#")[1]));
+  }, [location, hashname]);
   return (
     <SidebarProvider className="font-menu">
       <AppSidebar />
@@ -36,11 +39,7 @@ export default function Page() {
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
                   <BreadcrumbPage>
-                    {/* {hash.split("#")[1] ? (
-                      decodeURIComponent(hash.split("#")[1])
-                    ) : (
-                      <></>
-                    )} */}
+                    {hashname? hashname: (<></>)}
                   </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>

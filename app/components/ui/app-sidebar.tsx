@@ -14,15 +14,16 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
 } from "~/components/ui/sidebar";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useCart } from "~/context/cartcontext";
 import type { MenuItem } from "../types/Types";
 
 // This is sample data.
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { hash } = useLocation();
   const { state } = useCart();
+  const [hash, setHash] = React.useState("");
+
   function onSmoothScroll(
     e: React.MouseEvent<HTMLAnchorElement>,
     hashname: string | undefined
@@ -33,6 +34,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       block: "center",
     });
     window.history.pushState(null, "", "#" + hashname);
+    window.dispatchEvent(new PopStateEvent("popstate", { state: null }));
+    setHash(decodeURIComponent(window.location.href.split("#")[1]));
   }
   return (
     <Sidebar {...props}>
@@ -40,7 +43,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <a href="/">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <GalleryVerticalEnd className="size-4" />
                 </div>
@@ -58,12 +61,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenu>
             {state.product.map((category, idx) => (
               <SidebarMenuItem key={idx}>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton
+                  asChild
+                  isActive={hash === category.type}
+                  className=""
+                >
                   <a
-                    className="font-medium cursor-pointer"
+                    className="font-medium cursor-pointer "
                     onClick={(e) => {
                       onSmoothScroll(e, category.type);
                     }}
+                    href={"#" + category.type}
                   >
                     {category.type}
                   </a>
@@ -74,10 +82,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                       <SidebarMenuSubItem key={menu.id}>
                         <SidebarMenuSubButton
                           asChild
-                          isActive={
-                            decodeURIComponent(hash.split("#")[1]) ===
-                            menu.title
-                          }
+                          isActive={hash === menu.title}
                         >
                           <a
                             className="font-medium cursor-pointer"
