@@ -13,7 +13,7 @@ function ShadUi() {
       {product.map((group, idx) => (
         <div className="flex flex-col " key={idx} id={group.type}>
           <h1 className="text-xl font-semibold italic pb-3">{group.type}</h1>
-          <div className="flex flex-row flex-1 flex-wrap gap-8 lg:place-content-start md:place-content-center">
+          <div className="flex flex-row flex-1 flex-wrap gap-8 lg:justify-start justify-center">
             {group.items.map((dish, idx) => (
               <IngredientCard key={idx} dish={dish}></IngredientCard>
             ))}
