@@ -25,14 +25,15 @@ function IngredientCard({ className, dish, ...props }: IngredientCardProps) {
   const qty = cart.find((item) => item.id == dish.id)?.qty;
   return (
     <Card
-      className={cn("w-[380px] h-fit bg-muted/50 rounded-lg", className)}
+      className={cn("h-[400px] bg-muted/50 rounded-lg lg:w-[380px] md:w-[350px] w-[300px]", className)}
       id={dish.id}
+      {...props}
     >
-      <CardHeader className={cn("w-[380px] ", className)} {...props}>
+      <CardHeader className={cn("lg:w-[380px] w-[300px]", className)} >
         <CardTitle className="text-lg">{dish.title}</CardTitle>
         <CardDescription>{dish.description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="max-w-90 max-h-50">
         <Modalimg src={dish.src}></Modalimg>
       </CardContent>
       <CardFooter className="flex justify-between">
